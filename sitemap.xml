@@ -86,6 +86,11 @@
   </url>
   <url>
     <loc>https://obsessivenutrition.com/blog/eggs.html</loc>
+  </url>
+  <url>
+    <loc>https://obsessivenutrition.com/blog/fermented-foods.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fifth Floor — A Novel by Ruby Saudade</title>
+    <meta name="description" content="Literary erotica set in a secret society in Lisbon. Behind an unmarked door in Alfama, there are five floors. Most people never get past the first.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #dab97e;
+            --gold-light: #e8d4a8;
+            --cream: #faf0e2;
+            --dark: #0a0a0a;
+            --dark-blue: #0d1b2a;
+            --text: #e8e0d4;
+            --text-muted: #9a9084;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Montserrat', 'Helvetica Neue', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/hero-bg.jpg') center/cover no-repeat;
+            filter: brightness(0.4);
+            transform: scale(1.05);
+            transition: transform 0.5s;
+        }
+
+        .hero:hover .hero-bg { transform: scale(1.0); }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,10,0.7) 0%,
+                rgba(10,10,10,0.3) 40%,
+                rgba(10,10,10,0.3) 60%,
+                rgba(10,10,10,0.85) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+        }
+
+        .hero-label {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.05;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 2rem;
+        }
+
+        .hero-tagline {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-author {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.9rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--gold);
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+
+        p.muted { color: var(--text-muted); }
+
+        .highlight {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        strong { color: var(--cream); font-weight: 400; }
+
+        /* COVER SECTION */
+        .cover-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cover-image {
+            flex: 0 0 300px;
+            position: relative;
+        }
+
+        .cover-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(218,185,126,0.1);
+        }
+
+        .cover-text { flex: 1; }
+
+        /* FLOORS */
+        .floors {
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .floor-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(218,185,126,0.15);
+        }
+
+        .floor-item:last-child { border-bottom: none; }
+
+        .floor-number {
+            font-family: var(--serif);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            flex: 0 0 60px;
+            text-align: center;
+        }
+
+        .floor-content h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .floor-content h3 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .floor-content p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* SERIES */
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .series-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(218,185,126,0.15);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .series-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .series-card .book-num {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .series-card h3 {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .series-card .pairing {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            margin-bottom: 0.7rem;
+        }
+
+        .series-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* QUOTE / PULL */
+        .pull-quote {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pull-quote blockquote {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            line-height: 1.6;
+            color: var(--gold-light);
+        }
+
+        .pull-quote .attribution {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, var(--dark), var(--dark-blue));
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .cta-button.primary {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        .cta-button.primary:hover {
+            background: var(--gold-light);
+        }
+
+        /* AUTHOR */
+        .author-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .author-avatar {
+            flex: 0 0 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--dark-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            color: var(--cream);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(218,185,126,0.15);
+        }
+
+        footer p {
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* WARNING BAR */
+        .content-warning {
+            background: rgba(218,185,126,0.08);
+            border: 1px solid rgba(218,185,126,0.2);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .content-warning p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .content-warning strong {
+            color: var(--gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .cover-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cover-image { flex: 0 0 auto; max-width: 250px; margin: 0 auto; }
+            .author-section { flex-direction: column; text-align: center; }
+            .floor-item { flex-direction: column; gap: 0.5rem; }
+            .floor-number { flex: 0; text-align: left; }
+        }
+
+        /* FADE IN ANIMATION */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-label">A Novel</div>
+            <h1 class="hero-title">The Fifth Floor</h1>
+            <div class="hero-subtitle">The Salon</div>
+            <div class="hero-divider"></div>
+            <p class="hero-tagline">
+                Behind an unmarked door in Lisbon's oldest neighborhood,<br>
+                there are five floors.<br>
+                Most people never get past the first.
+            </p>
+            <div class="hero-author">Ruby Saudade</div>
+        </div>
+        <div class="scroll-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- BLURB -->
+    <section class="fade-in">
+        <div class="section-label">The Book</div>
+        <h2 class="section-title">She restores hidden art for a living.<br>She's never applied that skill to herself.</h2>
+        <div class="divider"></div>
+        <p>Vivienne Cross is an American art restorer working in Lisbon's National Tile Museum. She spends her days peeling back centuries of overpainting to reveal the original beauty beneath. Her personal life is another story &mdash; a passionless divorce, a career stalled, and a rich fantasy life she's never once acted on.</p>
+        <p>Then a colleague mentions a place. A <em>palácio</em> in the Alfama district. A society that's existed since 1793, devoted to one thing: <span class="highlight">the art of surrender.</span></p>
+        <p>Vivienne tells herself she'll only stay for a drink. She stays for <strong>Mariana</strong> &mdash; a Portuguese photographer with warm hands and an unnerving ability to see exactly what Vivienne has spent her whole life concealing.</p>
+        <p>Floor by floor, touch by touch, Vivienne discovers that the most terrifying thing in the world isn't being seen naked by strangers. It's being seen &mdash; <em>truly seen</em> &mdash; by someone who wants you exactly as you are.</p>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote fade-in">
+        <blockquote>"Some women find themselves in therapy.<br>Vivienne found a secret society in Lisbon."</blockquote>
+    </div>
+
+    <!-- COVER + DETAILS -->
+    <div class="cover-section fade-in">
+        <div class="cover-image">
+            <img src="images/cover.jpg" alt="The Fifth Floor: The Salon by Ruby Saudade - Book Cover">
+        </div>
+        <div class="cover-text">
+            <div class="section-label">Book One</div>
+            <h2 class="section-title">The Salon</h2>
+            <div class="divider"></div>
+            <p>Literary erotica in the tradition of Anne Rice and Anaïs Nin, set in the achingly beautiful streets of Lisbon.</p>
+            <p>Features a woman discovering her sexuality through art, observation, and a photographer who knows when to put down the camera.</p>
+            <div class="content-warning">
+                <p><strong>18+</strong> &mdash; Explicit sexual content. F/F romance with M/F/F elements. No fade to black. No apologies.</p>
+            </div>
+            <p class="muted" style="font-size: 0.9rem; margin-top: 1.5rem;">~64,000 words &bull; 20 chapters &bull; Standalone with series connections</p>
+            <div style="margin-top: 2rem;">
+                <a href="#" class="cta-button primary">Read on Kindle</a>
+                <a href="#" class="cta-button">Paperback</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- THE FLOORS -->
+    <div class="floors fade-in">
+        <div class="section-label">The Society</div>
+        <h2 class="section-title">Five floors. Each one deeper.</h2>
+        <div class="divider"></div>
+
+        <div class="floor-item">
+            <div class="floor-number">I</div>
+            <div class="floor-content">
+                <h3><em>O Salão</em> &mdash; The Salon</h3>
+                <p>Beautiful, civilized, clothed. The seduction begins with conversation. This is where desire is identified.</p>
+            </div>
+        </div>
+
+        <div class="floor-item">
+            <div class="floor-number">II</div>
+            <div class="floor-content">
+                <h3><em>O Jardim</em> &mdash; The Garden</h3>
+                <p>Semi-private rooms with open doorways. You may watch. You may be watched. This is where inhibition is shed.</p>
+            </div>
+        </div>
+
+        <div class="floor-item">
+            <div class="floor-number">III</div>
+            <div class="floor-content">
+                <h3><em>O Labirinto</em> &mdash; The Labyrinth</h3>
+                <p>A maze of themed rooms &mdash; the library, the bath house, the mirror room. This is where fantasy becomes flesh.</p>
+            </div>
+        </div>
+
+        <div class="floor-item">
+            <div class="floor-number">IV</div>
+            <div class="floor-content">
+                <h3><em>A Câmara</em> &mdash; The Chamber</h3>
+                <p>Private suites for negotiated scenes. The most controlled floor, paradoxically the most extreme.</p>
+            </div>
+        </div>
+
+        <div class="floor-item">
+            <div class="floor-number">V</div>
+            <div class="floor-content">
+                <h3><em>O Vazio</em> &mdash; The Void</h3>
+                <p>A single vast room. No rules except consent. No structure. No roles. This is where the masks come off. Very few ever reach the Fifth Floor.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PULL QUOTE 2 -->
+    <div class="pull-quote fade-in">
+        <blockquote>"Floor by floor. Touch by touch. Truth by truth."</blockquote>
+    </div>
+
+    <!-- SERIES -->
+    <section class="fade-in">
+        <div class="section-label">The Series</div>
+        <h2 class="section-title">Five floors. Five journeys.</h2>
+        <div class="divider"></div>
+        <p>Each book follows a different person through the society. Each is a complete story. Together, they map the full territory of human desire.</p>
+
+        <div class="series-grid">
+            <div class="series-card">
+                <div class="book-num">Book One</div>
+                <h3>The Salon</h3>
+                <div class="pairing">Vivienne &amp; Mariana</div>
+                <p>An art restorer discovers desire through observation. F/F.</p>
+            </div>
+            <div class="series-card">
+                <div class="book-num">Book Two</div>
+                <h3>The Garden</h3>
+                <div class="pairing">James &amp; Sebastião</div>
+                <p>A journalist surrenders control to a former priest. M/M.</p>
+            </div>
+            <div class="series-card">
+                <div class="book-num">Book Three</div>
+                <h3>The Labyrinth</h3>
+                <div class="pairing">Ana Beatriz &amp; Daniel</div>
+                <p>Masks, identity, and the courage to go bare-faced. M/F+.</p>
+            </div>
+            <div class="series-card">
+                <div class="book-num">Book Four</div>
+                <h3>The Chamber</h3>
+                <div class="pairing">Tomás &amp; Elena</div>
+                <p>A married couple rediscovers each other. M/F.</p>
+            </div>
+            <div class="series-card">
+                <div class="book-num">Book Five</div>
+                <h3>The Void</h3>
+                <div class="pairing">Sebastião &amp; Inês</div>
+                <p>The Director's origin. The finale. All characters return.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTHOR -->
+    <div class="author-section fade-in">
+        <div class="author-avatar">RS</div>
+        <div>
+            <div class="section-label">The Author</div>
+            <h2 class="section-title" style="font-size: 1.8rem;">Ruby Saudade</h2>
+            <p>Ruby Saudade writes literary erotica for readers who want more than mechanics &mdash; they want meaning. Set in the sensual landscapes of Portugal, her work explores desire as a form of self-discovery, drawing on Anne Rice, Anaïs Nin, and the European conviction that pleasure is an art form.</p>
+            <p class="muted"><em>The Fifth Floor</em> is her debut series.</p>
+        </div>
+    </div>
+
+    <!-- PRAISE / POSITIONING -->
+    <div class="pull-quote fade-in">
+        <blockquote>"Anne Rice's Sleeping Beauty meets Portrait of a Lady on Fire &mdash; set in a secret society in Lisbon."</blockquote>
+        <div class="attribution">For readers of Rice, Nin, and Rooney</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section fade-in">
+        <div class="section-label" style="margin-bottom: 1.5rem;">Begin</div>
+        <h2 class="section-title" style="max-width: 600px; margin: 0 auto 2rem;">The door is unmarked.<br>You already know where it is.</h2>
+        <a href="#" class="cta-button primary">Read The Salon</a>
+        <a href="#" class="cta-button">Join the Mailing List</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Ruby Saudade. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.75rem;">The Fifth Floor is a work of fiction. The society is imaginary. Lisbon, however, is very real.</p>
+    </footer>
+
+    <script>
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

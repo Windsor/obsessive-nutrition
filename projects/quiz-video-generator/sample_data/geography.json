@@ -1,0 +1,47 @@
+{
+  "name": "World Geography Challenge",
+  "category": "geography",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "What is the capital of France?",
+      "answer": "Paris"
+    },
+    {
+      "question": "Which country has the largest population?",
+      "answer": "China"
+    },
+    {
+      "question": "What is the longest river in the world?",
+      "answer": "The Nile River"
+    },
+    {
+      "question": "Which continent is the Sahara Desert located in?",
+      "answer": "Africa"
+    },
+    {
+      "question": "What is the capital of Japan?",
+      "answer": "Tokyo"
+    },
+    {
+      "question": "Which ocean is the largest?",
+      "answer": "Pacific Ocean"
+    },
+    {
+      "question": "What is the smallest country in the world?",
+      "answer": "Vatican City"
+    },
+    {
+      "question": "Which mountain is the tallest in the world?",
+      "answer": "Mount Everest"
+    },
+    {
+      "question": "What is the capital of Australia?",
+      "answer": "Canberra"
+    },
+    {
+      "question": "Which country is known as the Land of the Rising Sun?",
+      "answer": "Japan"
+    }
+  ]
+}

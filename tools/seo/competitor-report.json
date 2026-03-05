@@ -1,0 +1,174 @@
+{
+  "generated": "2026-03-01T03:06:53.108761",
+  "competitors": {
+    "Portugal Resident": {
+      "article_count": 10,
+      "topics": {
+        "algarve": 3,
+        "rent": 1
+      },
+      "top_categories": [
+        [
+          "Portugal",
+          5
+        ],
+        [
+          "Algarve",
+          3
+        ],
+        [
+          "News",
+          3
+        ],
+        [
+          "Contributors",
+          2
+        ],
+        [
+          "Opinion",
+          2
+        ],
+        [
+          "Portugal Events",
+          2
+        ],
+        [
+          "Leiria",
+          2
+        ],
+        [
+          "Aljezur",
+          1
+        ],
+        [
+          "Tourism",
+          1
+        ],
+        [
+          "Weather",
+          1
+        ],
+        [
+          "Food & Drink",
+          1
+        ],
+        [
+          "Wine",
+          1
+        ],
+        [
+          "Coimbra",
+          1
+        ],
+        [
+          "Albufeira",
+          1
+        ],
+        [
+          "Business",
+          1
+        ]
+      ]
+    },
+    "The Portugal News": {
+      "article_count": 69,
+      "topics": {
+        "algarve": 6,
+        "lisbon": 5,
+        "education": 2,
+        "retirement": 1,
+        "economy": 1,
+        "citizenship": 1,
+        "aima": 1,
+        "inflation": 1,
+        "madeira": 1,
+        "tax": 1,
+        "real estate": 1,
+        "residency": 1,
+        "housing": 1
+      },
+      "top_categories": [
+        [
+          "News",
+          25
+        ],
+        [
+          "Community",
+          6
+        ],
+        [
+          "Lifestyle",
+          5
+        ],
+        [
+          "Asia",
+          3
+        ],
+        [
+          "United Kingdom",
+          3
+        ],
+        [
+          "North America",
+          3
+        ],
+        [
+          "Business",
+          3
+        ],
+        [
+          "Portugal",
+          2
+        ],
+        [
+          "Africa",
+          2
+        ],
+        [
+          "Algarve",
+          2
+        ],
+        [
+          "Education",
+          2
+        ],
+        [
+          "Lisbon",
+          2
+        ],
+        [
+          "Health HPA",
+          2
+        ],
+        [
+          "South America",
+          1
+        ],
+        [
+          "Europe",
+          1
+        ]
+      ]
+    },
+    "Get Golden Visa": {
+      "type": "guide",
+      "note": "No RSS feed, manual analysis needed"
+    }
+  },
+  "combined_topics": {
+    "algarve": 9,
+    "lisbon": 5,
+    "education": 2,
+    "rent": 1,
+    "retirement": 1,
+    "economy": 1,
+    "citizenship": 1,
+    "aima": 1,
+    "inflation": 1,
+    "madeira": 1,
+    "tax": 1,
+    "real estate": 1,
+    "residency": 1,
+    "housing": 1
+  }
+}

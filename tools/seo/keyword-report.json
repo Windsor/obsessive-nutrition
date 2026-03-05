@@ -1,0 +1,542 @@
+{
+  "generated_at": "2026-03-01T01:05:47.318612",
+  "total_keywords": 100,
+  "by_seed": {
+    "portugal expat": [
+      {
+        "keyword": "portugal expats reddit",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expats",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat groups",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat communities",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat tax",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat requirements",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat visa",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat forum",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat jobs",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal expat cost of living",
+        "intent": "transactional"
+      }
+    ],
+    "living in portugal": [
+      {
+        "keyword": "living in portugal",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal gov.uk",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal seminars",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal as an american",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal as an expat",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal from uk",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal as a canadian",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal reddit",
+        "intent": "informational"
+      },
+      {
+        "keyword": "living in portugal vs spain",
+        "intent": "comparison"
+      },
+      {
+        "keyword": "living in portugal as a black american",
+        "intent": "informational"
+      }
+    ],
+    "portugal news": [
+      {
+        "keyword": "portugal news",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news today",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news in english",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news immigration",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news today live",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal newspaper",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news channel",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news live",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news weather",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal news in english today",
+        "intent": "news"
+      }
+    ],
+    "portugal real estate": [
+      {
+        "keyword": "portugal real estate",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate for sale",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate website",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate summit",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate summit 2026",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal real estate bubble",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate tax changes",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate prices",
+        "intent": "transactional"
+      },
+      {
+        "keyword": "portugal real estate affordability",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal real estate forecast 2026",
+        "intent": "news"
+      }
+    ],
+    "portugal golden visa": [
+      {
+        "keyword": "portugal golden visa",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa requirements",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa changes",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa 2025",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal golden visa nationality law",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa fund",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa amendments",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa price",
+        "intent": "transactional"
+      },
+      {
+        "keyword": "portugal golden visa processing time",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal golden visa news",
+        "intent": "news"
+      }
+    ],
+    "portugal d7 visa": [
+      {
+        "keyword": "portugal d7 visa",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa requirements",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa income requirements",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa requirements 2025",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal d7 visa apply online",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa official website",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa application form pdf",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa renewal requirements",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa for us citizens",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal d7 visa for indians",
+        "intent": "informational"
+      }
+    ],
+    "portugal nhr tax": [
+      {
+        "keyword": "portugal nhr tax",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax calculator",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax program",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax benefits",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax regime",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax rates",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax on foreign income",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax on dividends",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax status",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal nhr tax 2025",
+        "intent": "news"
+      }
+    ],
+    "portugal housing market": [
+      {
+        "keyword": "portugal housing market pressure",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market crash",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market overvalued",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market buy to let",
+        "intent": "transactional"
+      },
+      {
+        "keyword": "portugal housing market predictions",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market 2025",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal housing market growth",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market rental rates",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal housing market bubble",
+        "intent": "informational"
+      }
+    ],
+    "portugal economy": [
+      {
+        "keyword": "portugal economy",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy 2025",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal economy of the year",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy news",
+        "intent": "news"
+      },
+      {
+        "keyword": "portugal economy problems",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy size",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy main industries",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy ranking",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy graph",
+        "intent": "informational"
+      },
+      {
+        "keyword": "portugal economy the economist",
+        "intent": "informational"
+      }
+    ],
+    "moving to portugal": [
+      {
+        "keyword": "moving to portugal",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal from uk",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal from us",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal from canada",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal as an american",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal pros and cons",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal from australia",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal from ireland",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal with dogs",
+        "intent": "informational"
+      },
+      {
+        "keyword": "moving to portugal reddit",
+        "intent": "informational"
+      }
+    ]
+  },
+  "by_intent": {
+    "informational": [
+      "living in portugal",
+      "living in portugal as a black american",
+      "living in portugal as a canadian",
+      "living in portugal as an american",
+      "living in portugal as an expat",
+      "living in portugal from uk",
+      "living in portugal gov.uk",
+      "living in portugal reddit",
+      "living in portugal seminars",
+      "moving to portugal",
+      "moving to portugal as an american",
+      "moving to portugal from australia",
+      "moving to portugal from canada",
+      "moving to portugal from ireland",
+      "moving to portugal from uk",
+      "moving to portugal from us",
+      "moving to portugal pros and cons",
+      "moving to portugal reddit",
+      "moving to portugal with dogs",
+      "portugal d7 visa",
+      "portugal d7 visa application form pdf",
+      "portugal d7 visa apply online",
+      "portugal d7 visa for indians",
+      "portugal d7 visa for us citizens",
+      "portugal d7 visa income requirements",
+      "portugal d7 visa official website",
+      "portugal d7 visa renewal requirements",
+      "portugal d7 visa requirements",
+      "portugal economy",
+      "portugal economy graph",
+      "portugal economy main industries",
+      "portugal economy of the year",
+      "portugal economy problems",
+      "portugal economy ranking",
+      "portugal economy size",
+      "portugal economy the economist",
+      "portugal expat communities",
+      "portugal expat forum",
+      "portugal expat groups",
+      "portugal expat jobs",
+      "portugal expat requirements",
+      "portugal expat tax",
+      "portugal expat visa",
+      "portugal expats",
+      "portugal expats reddit",
+      "portugal golden visa",
+      "portugal golden visa amendments",
+      "portugal golden visa changes",
+      "portugal golden visa fund",
+      "portugal golden visa nationality law",
+      "portugal golden visa processing time",
+      "portugal golden visa requirements",
+      "portugal housing market",
+      "portugal housing market bubble",
+      "portugal housing market crash",
+      "portugal housing market growth",
+      "portugal housing market overvalued",
+      "portugal housing market predictions",
+      "portugal housing market pressure",
+      "portugal housing market rental rates",
+      "portugal nhr tax",
+      "portugal nhr tax benefits",
+      "portugal nhr tax calculator",
+      "portugal nhr tax on dividends",
+      "portugal nhr tax on foreign income",
+      "portugal nhr tax program",
+      "portugal nhr tax rates",
+      "portugal nhr tax regime",
+      "portugal nhr tax status",
+      "portugal real estate",
+      "portugal real estate affordability",
+      "portugal real estate bubble",
+      "portugal real estate for sale",
+      "portugal real estate summit",
+      "portugal real estate tax changes",
+      "portugal real estate website"
+    ],
+    "comparison": [
+      "living in portugal vs spain"
+    ],
+    "news": [
+      "portugal d7 visa requirements 2025",
+      "portugal economy 2025",
+      "portugal economy news",
+      "portugal golden visa 2025",
+      "portugal golden visa news",
+      "portugal housing market 2025",
+      "portugal news",
+      "portugal news channel",
+      "portugal news immigration",
+      "portugal news in english",
+      "portugal news in english today",
+      "portugal news live",
+      "portugal news today",
+      "portugal news today live",
+      "portugal news weather",
+      "portugal newspaper",
+      "portugal nhr tax 2025",
+      "portugal real estate forecast 2026",
+      "portugal real estate summit 2026"
+    ],
+    "transactional": [
+      "portugal expat cost of living",
+      "portugal golden visa price",
+      "portugal housing market buy to let",
+      "portugal real estate prices"
+    ]
+  },
+  "content_opportunities": [
+    "living in portugal vs spain",
+    "portugal expat cost of living",
+    "portugal golden visa price",
+    "portugal real estate prices"
+  ]
+}

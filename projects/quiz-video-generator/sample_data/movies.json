@@ -1,0 +1,47 @@
+{
+  "name": "Movie Trivia Challenge",
+  "category": "movies",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "Who directed 'The Shawshank Redemption'?",
+      "answer": "Frank Darabont"
+    },
+    {
+      "question": "What year was the first 'Star Wars' movie released?",
+      "answer": "1977"
+    },
+    {
+      "question": "Who played Jack in 'Titanic'?",
+      "answer": "Leonardo DiCaprio"
+    },
+    {
+      "question": "What is the name of the fictional African country in 'Black Panther'?",
+      "answer": "Wakanda"
+    },
+    {
+      "question": "Which movie won the Oscar for Best Picture in 2020?",
+      "answer": "Parasite"
+    },
+    {
+      "question": "Who directed 'Inception'?",
+      "answer": "Christopher Nolan"
+    },
+    {
+      "question": "What is the highest-grossing film of all time (not adjusted for inflation)?",
+      "answer": "Avatar"
+    },
+    {
+      "question": "Which actor played Iron Man in the Marvel Cinematic Universe?",
+      "answer": "Robert Downey Jr."
+    },
+    {
+      "question": "What is the name of the hobbit played by Elijah Wood in 'The Lord of the Rings'?",
+      "answer": "Frodo Baggins"
+    },
+    {
+      "question": "Which movie features the quote: 'Here's looking at you, kid'?",
+      "answer": "Casablanca"
+    }
+  ]
+}

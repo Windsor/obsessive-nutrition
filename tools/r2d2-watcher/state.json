@@ -1,0 +1,13 @@
+{
+  "last_status": "up",
+  "down_since": null,
+  "checks": 824,
+  "last_check": "2026-03-03T21:52:49.649541",
+  "last_results": {
+    "Project Tracker": true,
+    "Ghost PT": false,
+    "Ghost Finance": true,
+    "Quiz Generator": true,
+    "Social Poster": false
+  }
+}

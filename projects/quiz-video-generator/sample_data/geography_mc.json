@@ -1,0 +1,67 @@
+{
+  "name": "World Geography - Multiple Choice",
+  "category": "geography",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "question": "What is the largest country by area?",
+      "choices": ["Canada", "China", "Russia", "United States"],
+      "answer": "Russia",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "Which river is the longest in the world?",
+      "choices": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+      "answer": "Nile",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "What is the capital of Australia?",
+      "choices": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "answer": "Canberra",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "Which desert is the largest in the world?",
+      "choices": ["Sahara", "Arabian", "Gobi", "Antarctic"],
+      "answer": "Antarctic",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "Mount Everest is located on the border of which two countries?",
+      "choices": ["India & China", "Nepal & China", "Nepal & India", "Pakistan & China"],
+      "answer": "Nepal & China",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "Which continent has the most countries?",
+      "choices": ["Asia", "Europe", "Africa", "South America"],
+      "answer": "Africa",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "What is the smallest country in the world?",
+      "choices": ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
+      "answer": "Vatican City",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "Which ocean is the deepest?",
+      "choices": ["Atlantic", "Indian", "Pacific", "Arctic"],
+      "answer": "Pacific",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "The Great Barrier Reef is located off the coast of which country?",
+      "choices": ["Indonesia", "Australia", "Philippines", "Thailand"],
+      "answer": "Australia",
+      "question_type": "multiple_choice"
+    },
+    {
+      "question": "Which city is known as the 'City of Light'?",
+      "choices": ["London", "Rome", "Paris", "Tokyo"],
+      "answer": "Paris",
+      "question_type": "multiple_choice"
+    }
+  ]
+}

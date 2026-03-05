@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Escalate 🔥</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #16141e;
+  --card-bg: #1e1a2a;
+  --accent: #c2185b;
+  --accent2: #7b1fa2;
+  --gold: #ffd54f;
+  --text: #f5f5f5;
+  --text-dim: #9e9e9e;
+  --level1: #ff8a65;
+  --level2: #f06292;
+  --level3: #e91e63;
+  --level4: #d50000;
+  --level5: #ff1744;
+}
+
+html, body { 
+  height: 100%; 
+  background: var(--bg); 
+  color: var(--text); 
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* ── SCREENS ── */
+.screen { 
+  display: none; 
+  height: 100dvh; 
+  flex-direction: column; 
+  padding: 1rem; 
+  overflow-y: auto;
+}
+.screen.active { display: flex; }
+
+/* ── SETUP SCREEN ── */
+#setup { align-items: center; gap: 1rem; padding-top: 2rem; }
+#setup h1 { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 3rem; 
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+#setup .subtitle { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
+
+.player-form { width: 100%; max-width: 500px; }
+.player-row { 
+  display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;
+  margin-bottom: 0.5rem; 
+  background: var(--surface); 
+  border-radius: 12px; 
+  padding: 0.5rem 0.75rem;
+  animation: slideIn 0.3s ease;
+}
+@keyframes slideIn { from { opacity:0; transform: translateX(-20px); } }
+
+.player-row-top {
+  display: flex; gap: 0.5rem; align-items: center; width: 100%;
+}
+
+.player-row input { 
+  flex: 1; background: none; border: none; color: var(--text); 
+  font-size: 1rem; outline: none; font-family: inherit;
+  min-width: 80px;
+}
+.player-row input::placeholder { color: var(--text-dim); }
+
+.comfort-select { 
+  display: flex; gap: 2px; 
+}
+.comfort-btn { 
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid #333; 
+  background: none; color: var(--text-dim); font-size: 0.7rem; cursor: pointer;
+  transition: all 0.2s;
+}
+.comfort-btn.active { 
+  border-color: var(--accent); color: var(--text); 
+  background: var(--accent); 
+}
+
+.remove-btn { 
+  background: none; border: none; color: #555; font-size: 1.2rem; cursor: pointer; 
+  padding: 0 4px;
+}
+
+/* Gender & Interest buttons */
+.player-row-bottom {
+  display: flex; gap: 0.5rem; align-items: center; width: 100%;
+  padding-top: 0.25rem;
+}
+.gender-select, .interest-select {
+  display: flex; gap: 3px;
+}
+.gender-btn, .interest-btn {
+  padding: 0.2rem 0.5rem; border-radius: 14px; border: 1.5px solid #333;
+  background: none; color: var(--text-dim); font-size: 0.65rem; cursor: pointer;
+  transition: all 0.2s; font-family: inherit; white-space: nowrap;
+}
+.gender-btn.active {
+  border-color: var(--accent2); color: var(--text); background: var(--accent2);
+}
+.interest-btn.active {
+  border-color: var(--gold); color: #1a1a1a; background: var(--gold);
+}
+.field-label {
+  font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px;
+  min-width: 22px;
+}
+
+.btn { 
+  padding: 0.75rem 2rem; border-radius: 50px; border: none; 
+  font-family: inherit; font-weight: 700; font-size: 1rem; cursor: pointer;
+  transition: all 0.2s; text-transform: uppercase; letter-spacing: 1px;
+}
+.btn-primary { 
+  background: linear-gradient(135deg, var(--accent), var(--accent2)); 
+  color: white; 
+  box-shadow: 0 4px 20px rgba(194,24,91,0.4);
+}
+.btn-primary:active { transform: scale(0.96); }
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid #333; }
+.btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+.setup-actions { display: flex; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap; justify-content: center; }
+
+.setting-row { 
+  display: flex; justify-content: space-between; align-items: center; 
+  width: 100%; max-width: 500px; padding: 0.5rem 0; 
+}
+.setting-row label { color: var(--text-dim); font-size: 0.85rem; }
+.setting-row input[type=number] { 
+  width: 60px; background: var(--surface); border: 1px solid #333; 
+  border-radius: 8px; color: var(--text); text-align: center; padding: 0.4rem;
+  font-family: inherit;
+}
+
+/* ── GAME SCREEN ── */
+#game { padding: 0; position: relative; }
+
+.game-header { 
+  display: flex; justify-content: space-between; align-items: center; 
+  padding: 0.75rem 1rem; background: var(--surface); z-index: 10;
+  border-bottom: 1px solid #222;
+}
+.level-badge { 
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.1rem;
+  padding: 0.3rem 1rem; border-radius: 20px; 
+}
+.level-progress { 
+  display: flex; gap: 4px; align-items: center; 
+}
+.level-dot { 
+  width: 10px; height: 10px; border-radius: 50%; background: #333; 
+  transition: all 0.3s;
+}
+.level-dot.active { transform: scale(1.3); }
+.level-dot.filled { background: var(--accent); }
+
+.passes-indicator { font-size: 0.75rem; color: var(--text-dim); }
+
+/* Player strip */
+.player-strip { 
+  display: flex; gap: 0.5rem; padding: 0.5rem 1rem; 
+  overflow-x: auto; background: rgba(0,0,0,0.3);
+  scrollbar-width: none;
+}
+.player-strip::-webkit-scrollbar { display: none; }
+.player-chip { 
+  flex-shrink: 0; padding: 0.3rem 0.75rem; border-radius: 20px; 
+  font-size: 0.75rem; font-weight: 600; 
+  background: var(--surface); border: 2px solid #333;
+  transition: all 0.3s;
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.player-chip.current { 
+  border-color: var(--gold); color: var(--gold); 
+  box-shadow: 0 0 10px rgba(255,213,79,0.3);
+}
+.clothing-icons {
+  display: inline-flex; gap: 1px; font-size: 0.6rem; opacity: 0.8;
+}
+.clothing-icons .gone { opacity: 0.15; }
+.clothing-bare { font-size: 0.7rem; }
+
+/* Strip animation on chip */
+@keyframes stripShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px) rotate(-2deg); }
+  40% { transform: translateX(3px) rotate(2deg); }
+  60% { transform: translateX(-2px) rotate(-1deg); }
+  80% { transform: translateX(2px) rotate(1deg); }
+}
+.player-chip.stripping {
+  animation: stripShake 0.5s ease;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 15px rgba(194,24,91,0.6) !important;
+}
+
+/* Strip toast */
+.strip-toast {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: rgba(194,24,91,0.95); color: white;
+  padding: 1rem 2rem; border-radius: 16px;
+  font-size: 1.2rem; font-weight: 700;
+  z-index: 150; pointer-events: none;
+  animation: toastPop 2s ease forwards;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(194,24,91,0.5);
+}
+@keyframes toastPop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  25% { transform: translate(-50%, -50%) scale(1); }
+  75% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
+}
+
+/* Card area */
+.card-area { 
+  flex: 1; display: flex; align-items: center; justify-content: center; 
+  padding: 1rem; perspective: 1000px;
+}
+
+.card { 
+  width: 100%; max-width: 360px; aspect-ratio: 3/4; 
+  position: relative; cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card.flipped { transform: rotateY(180deg); }
+
+.card-face { 
+  position: absolute; inset: 0; border-radius: 20px; 
+  backface-visibility: hidden; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.card-back { 
+  background: linear-gradient(135deg, var(--card-bg), #2a1f3d);
+  border: 2px solid #333;
+}
+.card-back-design { 
+  font-family: 'Playfair Display', serif; font-size: 2.5rem; 
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.card-back-sub { color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem; }
+.tap-hint { 
+  position: absolute; bottom: 2rem; color: var(--text-dim); 
+  font-size: 0.75rem; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+.card-front { 
+  background: var(--card-bg); border: 2px solid; 
+  transform: rotateY(180deg); text-align: center;
+}
+.card-level-label { 
+  font-family: 'Playfair Display', serif; font-size: 0.85rem; 
+  text-transform: uppercase; letter-spacing: 3px; margin-bottom: 0.5rem;
+}
+.card-text { 
+  font-size: 1.3rem; line-height: 1.5; font-weight: 300; 
+  margin: 1rem 0;
+}
+.card-text strong { font-weight: 700; }
+.card-timer-badge { 
+  font-size: 0.8rem; background: rgba(255,255,255,0.1); 
+  padding: 0.3rem 0.8rem; border-radius: 20px; margin-top: 0.5rem;
+}
+.card-dice-badge { 
+  font-size: 0.8rem; background: rgba(255,255,255,0.1); 
+  padding: 0.3rem 0.8rem; border-radius: 20px; margin-top: 0.3rem;
+}
+.card-strip-badge {
+  font-size: 0.8rem; background: rgba(194,24,91,0.3);
+  padding: 0.3rem 0.8rem; border-radius: 20px; margin-top: 0.3rem;
+  color: #ff8a80;
+}
+
+/* Game actions */
+.game-actions { 
+  display: flex; gap: 0.5rem; padding: 0.75rem 1rem; 
+  justify-content: center; background: var(--surface);
+  border-top: 1px solid #222;
+}
+
+/* Dice overlay */
+.dice-overlay { 
+  display: none; position: fixed; inset: 0; z-index: 100; 
+  background: rgba(0,0,0,0.85); 
+  align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem;
+}
+.dice-overlay.active { display: flex; }
+.dice-container { display: flex; gap: 2rem; }
+.die { 
+  width: 80px; height: 80px; border-radius: 16px; 
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; text-align: center;
+  animation: diceRoll 0.6s ease;
+}
+@keyframes diceRoll { 
+  0% { transform: rotateZ(0) scale(0.3); opacity:0; }
+  50% { transform: rotateZ(180deg) scale(1.1); }
+  100% { transform: rotateZ(360deg) scale(1); opacity:1; }
+}
+.die-who { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; }
+.die-mod { background: linear-gradient(135deg, var(--gold), #ff8f00); color: #1a1a1a; }
+.dice-result { font-size: 1.1rem; color: var(--text); text-align: center; max-width: 300px; }
+
+/* Timer overlay */
+.timer-overlay { 
+  display: none; position: fixed; inset: 0; z-index: 100; 
+  background: rgba(0,0,0,0.85); 
+  align-items: center; justify-content: center; flex-direction: column; gap: 1rem;
+}
+.timer-overlay.active { display: flex; }
+.timer-display { 
+  font-family: 'Playfair Display', serif; font-size: 5rem; 
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.timer-ring { 
+  width: 200px; height: 200px; border-radius: 50%; 
+  border: 4px solid #333; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.timer-ring svg { position: absolute; inset: -4px; width: calc(100% + 8px); height: calc(100% + 8px); transform: rotate(-90deg); }
+.timer-ring circle { 
+  fill: none; stroke: var(--accent); stroke-width: 4; 
+  stroke-dasharray: 628; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+/* Vote overlay */
+.vote-overlay { 
+  display: none; position: fixed; inset: 0; z-index: 100; 
+  background: rgba(0,0,0,0.9); 
+  align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem;
+  padding: 2rem;
+}
+.vote-overlay.active { display: flex; }
+.vote-title { 
+  font-family: 'Playfair Display', serif; font-size: 2rem; 
+  text-align: center;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.vote-buttons { display: flex; gap: 1rem; }
+.vote-tally { color: var(--text-dim); font-size: 0.9rem; }
+
+/* Menu overlay */
+.menu-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.9);
+  align-items: center; justify-content: center; flex-direction: column; gap: 1rem;
+  padding: 2rem;
+}
+.menu-overlay.active { display: flex; }
+
+/* Particle BG */
+.particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.particle { 
+  position: absolute; width: 4px; height: 4px; border-radius: 50%; 
+  background: var(--accent); opacity: 0.15; 
+  animation: float linear infinite;
+}
+@keyframes float { 
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* Level colors */
+.level-1 { --lc: var(--level1); }
+.level-2 { --lc: var(--level2); }
+.level-3 { --lc: var(--level3); }
+.level-4 { --lc: var(--level4); }
+.level-5 { --lc: var(--level5); }
+</style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<!-- SETUP SCREEN -->
+<div class="screen active" id="setup">
+  <h1>Escalate</h1>
+  <p class="subtitle">How far will you go? 🔥</p>
+  
+  <div class="player-form" id="playerList"></div>
+  
+  <div class="setup-actions">
+    <button class="btn btn-secondary btn-small" onclick="addPlayer()">+ Add Player</button>
+  </div>
+
+  <div class="setting-row">
+    <label>Cards before escalate vote</label>
+    <input type="number" id="cardsPerLevel" value="8" min="3" max="20">
+  </div>
+
+  <div class="setup-actions" style="margin-top:1rem">
+    <button class="btn btn-primary" onclick="startGame()">🔥 Start Game</button>
+  </div>
+</div>
+
+<!-- GAME SCREEN -->
+<div class="screen" id="game">
+  <div class="game-header">
+    <div class="level-badge" id="levelBadge">Warm Up</div>
+    <div class="level-progress" id="levelProgress"></div>
+    <button class="btn btn-small btn-secondary" onclick="showMenu()" style="padding:0.4rem 0.7rem;font-size:0.75rem;">☰</button>
+  </div>
+  
+  <div class="player-strip" id="playerStrip"></div>
+  
+  <div class="card-area" id="cardArea">
+    <div class="card" id="card" onclick="drawCard()">
+      <div class="card-face card-back">
+        <div class="card-back-design">E</div>
+        <div class="card-back-sub">Tap to draw</div>
+        <div class="tap-hint">tap anywhere on the card</div>
+      </div>
+      <div class="card-face card-front" id="cardFront">
+        <div class="card-level-label" id="cardLevelLabel"></div>
+        <div class="card-text" id="cardText"></div>
+        <div class="card-timer-badge" id="cardTimer" style="display:none"></div>
+        <div class="card-dice-badge" id="cardDice" style="display:none"></div>
+        <div class="card-strip-badge" id="cardStrip" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="game-actions">
+    <button class="btn btn-secondary btn-small" id="passBtn" onclick="passCard()">Pass</button>
+    <button class="btn btn-secondary btn-small" id="timerBtn" onclick="startTimer()" style="display:none">⏱ Start Timer</button>
+    <button class="btn btn-secondary btn-small" id="diceBtn" onclick="rollDice()" style="display:none">🎲 Roll Dice</button>
+    <button class="btn btn-primary btn-small" onclick="nextTurn()">Next →</button>
+  </div>
+</div>
+
+<!-- DICE OVERLAY -->
+<div class="dice-overlay" id="diceOverlay" onclick="closeDice()">
+  <div class="dice-container">
+    <div class="die die-who" id="dieWho"></div>
+    <div class="die die-mod" id="dieMod"></div>
+  </div>
+  <div class="dice-result" id="diceResult"></div>
+  <div style="color:var(--text-dim);font-size:0.75rem;">tap to close</div>
+</div>
+
+<!-- TIMER OVERLAY -->
+<div class="timer-overlay" id="timerOverlay">
+  <div class="timer-ring">
+    <svg viewBox="0 0 208 208"><circle cx="104" cy="104" r="100" id="timerCircle"/></svg>
+    <div class="timer-display" id="timerDisplay">0</div>
+  </div>
+  <button class="btn btn-secondary btn-small" onclick="stopTimer()">Stop</button>
+</div>
+
+<!-- VOTE OVERLAY -->
+<div class="vote-overlay" id="voteOverlay">
+  <div class="vote-title" id="voteTitle">Time to Escalate?</div>
+  <p style="color:var(--text-dim);text-align:center;font-size:0.9rem;" id="voteDesc"></p>
+  <div class="vote-tally" id="voteTally"></div>
+  <div class="vote-buttons" id="voteButtons"></div>
+  <button class="btn btn-secondary btn-small" style="margin-top:1rem" onclick="skipVote()">Stay at current level</button>
+</div>
+
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+  <h2 style="font-family:'Playfair Display',serif;">Menu</h2>
+  <button class="btn btn-secondary" onclick="showMenu()">Resume</button>
+  <button class="btn btn-secondary" onclick="if(confirm('End game?')){location.reload()}">End Game</button>
+</div>
+
+<script>
+// ── CARD DATABASE ──
+const CARDS = {
+1: [
+  {text:"Tell the group your wildest fantasy location."},
+  {text:"Give {p1} a compliment you've been holding back."},
+  {text:"Describe your most embarrassing hookup in 30 seconds.",timer:30},
+  {text:"Everyone point to who they think is the best kisser. Majority wins bragging rights."},
+  {text:"Share the most daring place you've ever had sex."},
+  {text:"Tell {p1} what you first noticed about them."},
+  {text:"Confess: what's your biggest turn-on? Be specific."},
+  {text:"Would you rather: be watched or do the watching? Explain."},
+  {text:"Go around the circle — everyone shares one secret fantasy.",timer:60},
+  {text:"Tell {p1} your favorite thing about their body."},
+  {text:"Demonstrate your best 'come hither' look at {p1}.",timer:10},
+  {text:"Two truths and a lie — but make them all sexual. Group guesses the lie."},
+  {text:"Describe what your perfect night tonight would look like."},
+  {text:"Rank everyone in the room by flirtiness. Out loud.",timer:30},
+  {text:"Send a sexy text to {p1} — read it aloud to the group."},
+  {text:"Tell {p1} something you've always wanted to do with them."},
+  {text:"Close your eyes. Describe your ideal kiss in detail.",timer:20},
+  {text:"Confess who in this room you'd most like to wake up next to."},
+  // Strip cards (~10%)
+  {text:"Lose an article of clothing — your choice which. Consider it a warm-up.", strip:"player"},
+  {text:"Shoes or socks don't count — lose a REAL article of clothing.", strip:"player"},
+],
+2: [
+  {text:"Whisper something seductive into {p1}'s ear.",timer:15},
+  {text:"Let {p1} feed you something — blindfolded.",timer:30,dice:true},
+  {text:"Give {p1} a 10-second shoulder massage.",timer:10},
+  {text:"Make eye contact with {p1} for 30 seconds. No laughing.",timer:30},
+  {text:"Sit on {p1}'s lap for the next two rounds."},
+  {text:"Let {p1} style your hair however they want.",timer:30},
+  {text:"Dance seductively for {p1} for 15 seconds.",timer:15},
+  {text:"Hold {p1}'s hand and trace letters on their palm. They guess the word.",timer:30},
+  {text:"Give {p1} a slow, lingering hug. Make it count.",timer:15},
+  {text:"Let {p1} apply lip balm to your lips — using their finger.",timer:15},
+  {text:"Blow gently on {p1}'s neck for 10 seconds.",timer:10},
+  {text:"Tell {p1} exactly what you'd do on a first date with them."},
+  {text:"Let {p1} choose a song. Slow dance together.",timer:45},
+  {text:"Play with {p1}'s hair for 20 seconds.",timer:20},
+  {text:"Draw a heart on {p1}'s arm with your fingertip.",timer:10},
+  {text:"Let {p1} smell your neck and describe your scent to the group.",timer:15},
+  {text:"Bite your lip while making eye contact with {p1} for 10 seconds.",timer:10},
+  {text:"Let {p1} flex for you while you rate his muscles out of 10.",timer:15, requires:"mf_mw"},
+  {text:"Run your fingers through {p1}'s beard or jawline. Slowly.",timer:15, requires:"mf_mw"},
+  {text:"Sit in {p1}'s lap and fix his collar. Take your time.",timer:15, requires:"mf_mw"},
+  {text:"Arm wrestle {p1}. Loser has to sit in the winner's lap.",timer:20, requires:"mm"},
+  {text:"Compare hand sizes with {p1}. Interlock fingers for 10 seconds.",timer:10, requires:"mm"},
+  {text:"Let {p1} braid your hair — or try to.",timer:30, requires:"ff"},
+  {text:"Tell {p1} she's the most beautiful person in the room. Mean it.",timer:10, requires:"ff"},
+  {text:"{p1} picks your outfit for the next round from what you're wearing. Restyle each other.",timer:30, requires:"ff"},
+  // Strip cards (~20%)
+  {text:"{p1} picks which article of clothing you take off.", strip:"player"},
+  {text:"Lose an article of clothing. Then whisper to {p1} how it made you feel.", strip:"player"},
+  {text:"Everyone votes: you or {p1} strips. Majority rules.", strip:"player"},
+  {text:"Take something off and toss it across the room. Own it.", strip:"player"},
+  {text:"Flirty forfeit: remove one item, then do your best runway walk.", strip:"player", timer:15},
+],
+3: [
+  {text:"Remove one item of clothing — {p1} chooses which."},
+  {text:"Kiss {p1}'s neck for 15 seconds.",timer:15},
+  {text:"Let {p1} trace their finger anywhere above the waist for 20 seconds.",timer:20},
+  {text:"{p1} gives you a hickey — you choose where (above the collar).",timer:15},
+  {text:"Body shot: {p1} takes a drink off your body.",dice:true},
+  {text:"Blindfold yourself. Three people touch your face. Guess who's who.",timer:30},
+  {text:"Kiss the person to your left on the lips for 5 seconds.",timer:5},
+  {text:"Let {p1} unbutton one button of your shirt. Slowly.",timer:15},
+  {text:"{p1} holds an ice cube. Trace it along your collarbone.",timer:15},
+  {text:"Straddle {p1}'s lap and whisper your biggest fantasy.",timer:20},
+  {text:"The group votes: you must kiss whoever gets the most votes.",timer:10},
+  {text:"Let {p1} leave a lipstick mark anywhere on your skin."},
+  {text:"Remove your shirt. {p1} has 10 seconds to draw on your back with their finger.",timer:10, strip:"player"},
+  {text:"Sit behind {p1} and massage their shoulders and neck.",timer:30},
+  {text:"Let {p1} pick: you lose your top or your bottoms for one round.", strip:"player"},
+  {text:"Press your body against {p1}'s for 15 seconds. Maintain eye contact.",timer:15},
+  {text:"Give {p1} a kiss — the group rates it 1-10."},
+  {text:"Let {p1} unbutton your shirt while you flex. She rates each reveal.",timer:20, requires:"mf_mw"},
+  {text:"{p1} traces his abs (or where they'd be) while you watch. Give feedback.",timer:15, requires:"mf_wm"},
+  {text:"Lift {p1} off the ground. Hold her for 10 seconds.",timer:10, requires:"mf_mw"},
+  {text:"Let {p1} undo your tie or belt. Slowly. The group watches.",timer:20, requires:"mf_mw"},
+  {text:"Kiss {p1}'s bicep. Then tell the group how it felt.",timer:10, requires:"mf_mw"},
+  {text:"Wrestle with {p1} for 20 seconds. Shirts off.",timer:20, requires:"mm"},
+  {text:"Compare bodies with {p1}. The group judges who wins each category.",timer:30, requires:"mm"},
+  {text:"{p1} lies back. Trace the outline of his chest with your finger.",timer:15, requires:"mm"},
+  {text:"Give {p1} a neck kiss. Then she gives you one back. Group rates both.",timer:20, requires:"ff"},
+  {text:"Let {p1} adjust your bra strap. Or remove it.",timer:15, requires:"ff"},
+  {text:"Dance together with {p1} — hands on each other's hips.",timer:20, requires:"ff"},
+  // Strip cards (~40%)
+  {text:"Strip poker rules: both you and {p1} roll an imaginary hand. Loser strips.", strip:"player", dice:true},
+  {text:"Lose an article. Then {p1} traces where it used to be for 10 seconds.", strip:"player", timer:10},
+  {text:"You and {p1} both lose an article. Then slow dance together.", strip:"both", timer:20},
+  {text:"{p1} removes an article of YOUR clothing for you. Their choice, their hands.", strip:"player"},
+  {text:"Body shot — but first, lose an article so there's more skin to work with.", strip:"player", dice:true},
+  {text:"Staring contest with {p1}. First to blink strips.", strip:"player", timer:30},
+  {text:"The group votes: which article comes off? You must comply.", strip:"player"},
+  {text:"Take something off. {p1} wears it for the rest of the round.", strip:"player"},
+  {text:"Lose an article, then kiss {p1} wherever the fabric used to cover.", strip:"player", timer:10},
+  {text:"{p1} strips. You get to enjoy the view for 15 seconds.", strip:"target", timer:15},
+],
+4: [
+  {text:"Give {p1} a lap dance.",timer:30,dice:true},
+  {text:"Spend 2 minutes in the closet with {p1}. What happens stays there.",timer:120},
+  {text:"{p1} removes one item of your underwear using only their teeth.",timer:30, strip:"player"},
+  {text:"Body paint: {p1} draws something on your bare chest/stomach.",timer:30},
+  {text:"Blindfolded, kiss three people. Guess all three correctly or lose another clothing item.",timer:45, strip:"player"},
+  {text:"Give {p1} a full back massage. They're face down, shirt off.",timer:60},
+  {text:"Let {p1} leave a trail of kisses from your ear to your shoulder.",timer:20},
+  {text:"Demonstrate your best move on {p1} — keep it above the belt.",timer:20},
+  {text:"Skinny dip dare: remove all but underwear for the rest of this level.", strip:"player"},
+  {text:"{p1} feeds you fruit. No hands allowed — from either of you.",timer:30},
+  {text:"Spoon with {p1} for 1 minute. Big spoon or little — their choice.",timer:60},
+  {text:"Let {p1} blindfold you and kiss you somewhere unexpected.",timer:15},
+  {text:"Do 10 push-ups over {p1} while they lie beneath you. Maintain eye contact.",timer:30},
+  {text:"Whisper to {p1} exactly what you want to do to them tonight.",timer:15},
+  {text:"Pin {p1} against the wall. 15 seconds of intense eye contact.",timer:15},
+  {text:"Carry {p1} to the couch. The group decides what happens for 30 seconds.",timer:30},
+  {text:"Pick {p1} up princess-style. Carry her across the room.",timer:15, requires:"mf_mw"},
+  {text:"Let {p1} sit on your shoulders. She decides what happens from up there.",timer:20, requires:"mf_mw"},
+  {text:"{p1} removes your belt with one hand. Time him.",timer:15, requires:"mf_wm"},
+  {text:"Let {p1} trace his hands from your shoulders down to your waist.",timer:15, requires:"mf_wm"},
+  {text:"Pin {p1} down. He has 30 seconds to escape. If he can't, you win a dare.",timer:30, requires:"mf_wm"},
+  {text:"Chest to chest with {p1} for 30 seconds. No shirt.",timer:30, requires:"mm"},
+  {text:"Arm wrestle {p1} — loser removes an item of clothing.",timer:20, requires:"mm", strip:"player"},
+  {text:"Let {p1} pin you against the wall. 20 seconds.",timer:20, requires:"mm"},
+  {text:"Give {p1} a slow lap dance. She decides where your hands go.",timer:30, requires:"ff"},
+  {text:"Body glitter: {p1} applies it to your chest and shoulders.",timer:30, requires:"ff"},
+  {text:"Lie together with {p1}. Trace each other's curves for 30 seconds.",timer:30, requires:"ff"},
+  // Strip cards (~60%)
+  {text:"You and {p1} both lose an article. Now do 30 seconds of intense eye contact.", strip:"both", timer:30},
+  {text:"Strip tease for {p1}. Make it last 20 seconds. Give them a show.", strip:"player", timer:20},
+  {text:"{p1} slowly removes one of your articles. The group watches.", strip:"player", timer:15},
+  {text:"Lose an article. Then {p1} gets to explore the newly revealed skin for 15 seconds.", strip:"player", timer:15},
+  {text:"Truth or strip: {p1} asks a deeply personal question. Answer honestly or lose clothing.", strip:"player"},
+  {text:"Both you and {p1} strip. Then body paint something on each other.", strip:"both", timer:30},
+  {text:"You have 10 seconds to take something off as seductively as possible.", strip:"player", timer:10},
+  {text:"Lose an article. {p1} kisses wherever it was covering.", strip:"player", timer:15},
+  {text:"Forfeit round: everyone in the game loses an article right now.", strip:"player"},
+  {text:"{p1} strips for you. Rate their performance 1-10.", strip:"target", timer:15},
+  {text:"Remove two articles at once. Make it dramatic.", strip:"player"},
+  {text:"Lap dance for {p1}, but first — lose an article.", strip:"player", timer:30},
+  {text:"Blindfolded strip: {p1} removes an article from you while you're blindfolded.", strip:"player", timer:20},
+],
+5: [
+  {text:"Act out your favorite position with {p1} for 30 seconds. Clothes optional.",timer:30},
+  {text:"{p1} is yours for 3 minutes — anything goes within their limits.",timer:180},
+  {text:"The group selects two players. 5 minutes alone. Report back.",timer:300},
+  {text:"Strip completely. {p1} has 60 seconds to explore — hands only.",timer:60, strip:"player"},
+  {text:"Recreate your favorite adult scene with {p1}.",timer:60,dice:true},
+  {text:"Body worship: spend 60 seconds appreciating {p1}'s body. Show, don't tell.",timer:60},
+  {text:"Truth or dare extreme: {p1} asks, you MUST answer or do it."},
+  {text:"Pair up with {p1}. Each couple has 5 minutes of privacy.",timer:300},
+  {text:"Full body massage for {p1}. Use oil if available.",timer:120},
+  {text:"Choose any player. Act out a fantasy. The group watches.",timer:90},
+  {text:"{p1} tells you exactly what to do. Follow their instructions for 2 minutes.",timer:120},
+  {text:"Seven minutes in heaven with {p1}.",timer:420},
+  {text:"Blindfold {p1}. You have 2 minutes. Make every second count.",timer:120},
+  {text:"You and {p1}: recreate the most passionate kiss you can imagine.",timer:30},
+  {text:"Pick any two players. They put on a 60-second show for the group.",timer:60},
+  {text:"{p1} is blindfolded. Two players compete to give the best kiss. {p1} chooses the winner.",timer:30},
+  {text:"Carry {p1} to the bedroom. You have 5 minutes.",timer:300, requires:"mf_mw"},
+  {text:"She's in charge. {p1} tells you exactly what to do for 3 minutes.",timer:180, requires:"mf_mw"},
+  {text:"Full body worship of {p1}. Start at her feet, work your way up.",timer:90, requires:"mf_mw"},
+  {text:"Let {p1} worship your body. He starts at your neck and works down.",timer:90, requires:"mf_wm"},
+  {text:"{p1} pins you. He has 3 minutes. You decide the limits.",timer:180, requires:"mf_wm"},
+  {text:"Wrestling match with {p1}. Clothes come off with each pin. Best of 3.",timer:120, requires:"mm", strip:"both"},
+  {text:"Take turns with {p1}: 60 seconds each, showing your best moves.",timer:120, requires:"mm"},
+  {text:"{p1} gives commands. You follow for 2 minutes. Then switch.",timer:240, requires:"mm"},
+  {text:"Full sensual massage with {p1}. Take turns, 2 minutes each.",timer:240, requires:"ff"},
+  {text:"Recreate a scene from your favorite romance with {p1}. Make it yours.",timer:120, requires:"ff"},
+  {text:"Body exploration with {p1}. 60 seconds each. Be gentle.",timer:120, requires:"ff"},
+  // Strip cards (~70%)
+  {text:"If you're not already bare, everything comes off. Right now.", strip:"player"},
+  {text:"You and {p1} both strip completely. 60 seconds to explore.", strip:"both", timer:60},
+  {text:"Full strip for the group. Make it a performance.", strip:"player", timer:30},
+  {text:"Lose everything. {p1} has 2 minutes. No limits discussion first.", strip:"player", timer:120},
+  {text:"Strip {p1} completely. Use only your teeth.", strip:"target", timer:60},
+  {text:"Both of you: lose it all. Body worship for 90 seconds each.", strip:"both", timer:180},
+  {text:"Dare or bare: {p1} gives you an extreme dare. Refuse? Strip completely.", strip:"player"},
+  {text:"Naked truth: strip an article for every question you refuse to answer from {p1}.", strip:"player"},
+  {text:"You and {p1} race to strip. Last one fully undressed does whatever the winner says.", strip:"both", timer:20},
+  {text:"Slow strip for {p1}. One article every 15 seconds. Maintain eye contact.", strip:"player", timer:45},
+  {text:"Final reveal: lose your last article. {p1} gets 30 seconds of appreciation.", strip:"player", timer:30},
+  {text:"Everyone still clothed loses an article. The bare ones get to watch.", strip:"player"},
+  {text:"Full body exposure with {p1}. Nothing hidden. 2 minutes of vulnerability.", strip:"both", timer:120},
+]
+};
+
+const LEVEL_NAMES = ['','Warm Up','Flirt','Heat','Fire','Inferno'];
+const LEVEL_EMOJIS = ['','☀️','💋','🔥','🔥🔥','💥'];
+const MODIFIERS = ['blindfolded','in slow motion','player\'s choice of how','with ice','in the dark','for double the time'];
+
+// ── GAME STATE ──
+let G = {
+  players: [],
+  currentLevel: 1,
+  currentPlayer: 0,
+  cardsDrawn: 0,
+  cardsPerLevel: 8,
+  cardFlipped: false,
+  currentCard: null,
+  timerInterval: null,
+  usedCards: {1:new Set(),2:new Set(),3:new Set(),4:new Set(),5:new Set()},
+};
+
+// ── CLOTHING SYSTEM ──
+const STARTING_CLOTHING = 5;
+
+function getClothingDisplay(count) {
+  if (count <= 0) return '<span class="clothing-bare">🔥</span>';
+  let html = '<span class="clothing-icons">';
+  for (let i = 0; i < STARTING_CLOTHING; i++) {
+    html += `<span class="${i < count ? '' : 'gone'}">👕</span>`;
+  }
+  html += '</span>';
+  return html;
+}
+
+function stripPlayer(player) {
+  if (player.clothing <= 0) return false;
+  player.clothing = Math.max(0, player.clothing - 1);
+  return true;
+}
+
+function showStripToast(playerName, alreadyBare) {
+  const toast = document.createElement('div');
+  toast.className = 'strip-toast';
+  toast.textContent = alreadyBare
+    ? `🔥 ${playerName} is already bare!`
+    : `👕 ${playerName} removes an article!`;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2200);
+}
+
+function animateStripChip(playerIdx) {
+  const chips = document.querySelectorAll('.player-chip');
+  if (chips[playerIdx]) {
+    chips[playerIdx].classList.add('stripping');
+    setTimeout(() => {
+      chips[playerIdx].classList.remove('stripping');
+      updateGameUI();
+    }, 600);
+  }
+}
+
+function handleStrip(card) {
+  const stripType = card.strip;
+  if (!stripType) return;
+
+  const current = G.players[G.currentPlayer];
+  const targetPlayer = card._targetPlayer;
+
+  if (stripType === 'player' || stripType === true) {
+    const stripped = stripPlayer(current);
+    showStripToast(current.name, !stripped);
+    animateStripChip(G.currentPlayer);
+  } else if (stripType === 'target' && targetPlayer) {
+    const targetIdx = G.players.indexOf(targetPlayer);
+    const stripped = stripPlayer(targetPlayer);
+    showStripToast(targetPlayer.name, !stripped);
+    if (targetIdx >= 0) animateStripChip(targetIdx);
+  } else if (stripType === 'both') {
+    const stripped1 = stripPlayer(current);
+    showStripToast(current.name, !stripped1);
+    animateStripChip(G.currentPlayer);
+    if (targetPlayer) {
+      const targetIdx = G.players.indexOf(targetPlayer);
+      setTimeout(() => {
+        const stripped2 = stripPlayer(targetPlayer);
+        showStripToast(targetPlayer.name, !stripped2);
+        if (targetIdx >= 0) animateStripChip(targetIdx);
+      }, 800);
+    }
+  }
+}
+
+// ── GENDER / MATCHING HELPERS ──
+function genderToInterestKey(gender) {
+  if (gender === 'man') return 'men';
+  if (gender === 'woman') return 'women';
+  return 'everyone';
+}
+
+function isInterestedIn(player, targetGender) {
+  if (player.interestedIn.has('everyone')) return true;
+  return player.interestedIn.has(genderToInterestKey(targetGender));
+}
+
+function isMutualMatch(playerA, playerB) {
+  return isInterestedIn(playerA, playerB.gender) && isInterestedIn(playerB, playerA.gender);
+}
+
+function getMatches(player, level) {
+  return G.players.filter(p => p !== player && p.maxLevel >= level && isMutualMatch(player, p));
+}
+
+function getPairingType(a, b) {
+  const genders = [a.gender, b.gender].sort();
+  if (genders[0] === 'man' && genders[1] === 'man') return 'mm';
+  if (genders[0] === 'woman' && genders[1] === 'woman') return 'ff';
+  if (genders[0] === 'man' && genders[1] === 'woman') return 'mf';
+  return 'other';
+}
+
+function cardMatchesPairing(card, pairingType, currentGender, targetGender) {
+  const req = card.requires;
+  if (!req || req === 'any') return true;
+  if (req === 'mf_mw') return pairingType === 'mf' && currentGender === 'man' && targetGender === 'woman';
+  if (req === 'mf_wm') return pairingType === 'mf' && currentGender === 'woman' && targetGender === 'man';
+  if (req === 'mf') return pairingType === 'mf';
+  if (req === 'mm') return pairingType === 'mm';
+  if (req === 'ff') return pairingType === 'ff';
+  return true;
+}
+
+function getAvailablePairings(currentPlayer, level) {
+  const matches = getMatches(currentPlayer, level);
+  const pairings = new Set();
+  for (const m of matches) {
+    const pt = getPairingType(currentPlayer, m);
+    pairings.add(pt);
+    if (pt === 'mf') {
+      if (currentPlayer.gender === 'man') pairings.add('mf_mw');
+      if (currentPlayer.gender === 'woman') pairings.add('mf_wm');
+    }
+  }
+  return pairings;
+}
+
+function canPlayCard(card, availablePairings, hasTarget) {
+  const req = card.requires;
+  const needsTarget = card.text.includes('{p1}');
+  if (needsTarget && !hasTarget) return false;
+  if (!req || req === 'any') return true;
+  return availablePairings.has(req);
+}
+
+// ── INIT ──
+function init() {
+  createParticles();
+  for(let i=0;i<4;i++) addPlayer();
+}
+
+function createParticles() {
+  const c = document.getElementById('particles');
+  for(let i=0;i<20;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random()*100+'%';
+    p.style.animationDuration = (8+Math.random()*12)+'s';
+    p.style.animationDelay = Math.random()*10+'s';
+    p.style.width = p.style.height = (2+Math.random()*4)+'px';
+    if(Math.random()>0.5) p.style.background = 'var(--gold)';
+    c.appendChild(p);
+  }
+}
+
+// ── SETUP ──
+function addPlayer() {
+  const list = document.getElementById('playerList');
+  const idx = list.children.length;
+  if(idx >= 12) return;
+  const row = document.createElement('div');
+  row.className = 'player-row';
+  row.innerHTML = `
+    <div class="player-row-top">
+      <input type="text" placeholder="Player ${idx+1}" maxlength="20">
+      <div class="comfort-select">
+        ${[1,2,3,4,5].map(n=>`<button class="comfort-btn ${n<=3?'active':''}" data-level="${n}" onclick="setComfort(this)">${n}</button>`).join('')}
+      </div>
+      <button class="remove-btn" onclick="this.closest('.player-row').remove()">×</button>
+    </div>
+    <div class="player-row-bottom">
+      <span class="field-label">I am</span>
+      <div class="gender-select">
+        <button class="gender-btn" data-g="man" onclick="setGender(this)">Man</button>
+        <button class="gender-btn" data-g="woman" onclick="setGender(this)">Woman</button>
+        <button class="gender-btn" data-g="nb" onclick="setGender(this)">NB</button>
+      </div>
+      <span class="field-label" style="margin-left:0.3rem">Into</span>
+      <div class="interest-select">
+        <button class="interest-btn" data-i="men" onclick="toggleInterest(this)">Men</button>
+        <button class="interest-btn" data-i="women" onclick="toggleInterest(this)">Women</button>
+        <button class="interest-btn" data-i="everyone" onclick="toggleInterest(this)">All</button>
+      </div>
+    </div>
+  `;
+  list.appendChild(row);
+}
+
+function setGender(btn) {
+  const row = btn.closest('.gender-select');
+  row.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function toggleInterest(btn) {
+  const row = btn.closest('.interest-select');
+  const val = btn.dataset.i;
+  if (val === 'everyone') {
+    const wasActive = btn.classList.contains('active');
+    row.querySelectorAll('.interest-btn').forEach(b => b.classList.remove('active'));
+    if (!wasActive) btn.classList.add('active');
+  } else {
+    row.querySelector('[data-i="everyone"]').classList.remove('active');
+    btn.classList.toggle('active');
+  }
+}
+
+function setComfort(btn) {
+  const row = btn.closest('.comfort-select');
+  const level = parseInt(btn.dataset.level);
+  row.querySelectorAll('.comfort-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.level) <= level);
+  });
+}
+
+function getComfort(row) {
+  const btns = row.querySelectorAll('.comfort-btn.active');
+  return btns.length ? Math.max(...[...btns].map(b=>parseInt(b.dataset.level))) : 3;
+}
+
+function getGender(row) {
+  const active = row.querySelector('.gender-btn.active');
+  return active ? active.dataset.g : 'nb';
+}
+
+function getInterests(row) {
+  const active = row.querySelectorAll('.interest-btn.active');
+  const set = new Set();
+  active.forEach(b => set.add(b.dataset.i));
+  if (set.size === 0) set.add('everyone');
+  return set;
+}
+
+function startGame() {
+  const rows = document.querySelectorAll('.player-row');
+  G.players = [];
+  rows.forEach(row => {
+    const inp = row.querySelector('input');
+    const name = inp.value.trim() || inp.placeholder;
+    if(name) {
+      G.players.push({
+        name,
+        maxLevel: getComfort(row),
+        passes: 0,
+        gender: getGender(row),
+        interestedIn: getInterests(row),
+        clothing: STARTING_CLOTHING,
+      });
+    }
+  });
+  if(G.players.length < 2) { alert('Need at least 2 players!'); return; }
+  G.cardsPerLevel = parseInt(document.getElementById('cardsPerLevel').value) || 8;
+  G.currentLevel = 1;
+  G.currentPlayer = 0;
+  G.cardsDrawn = 0;
+  
+  document.getElementById('setup').classList.remove('active');
+  document.getElementById('game').classList.add('active');
+  updateGameUI();
+  resetCard();
+}
+
+// ── GAME UI ──
+function updateGameUI() {
+  const lvl = G.currentLevel;
+  const badge = document.getElementById('levelBadge');
+  badge.textContent = `${LEVEL_EMOJIS[lvl]} ${LEVEL_NAMES[lvl]}`;
+  badge.style.background = `var(--level${lvl})`;
+  badge.style.color = lvl >= 4 ? 'white' : '#1a1a1a';
+  
+  const prog = document.getElementById('levelProgress');
+  prog.innerHTML = [1,2,3,4,5].map(n => 
+    `<div class="level-dot ${n<=lvl?'filled':''} ${n===lvl?'active':''}" style="${n<=lvl?`background:var(--level${n})`:''}""></div>`
+  ).join('');
+  
+  const strip = document.getElementById('playerStrip');
+  strip.innerHTML = G.players.map((p,i) => {
+    const isSpectator = p.maxLevel < G.currentLevel || (getMatches(p, lvl).length === 0 && lvl >= 2);
+    return `<div class="player-chip ${i===G.currentPlayer?'current':''}">${p.name}${isSpectator ? ' 👀':''} ${getClothingDisplay(p.clothing)}</div>`;
+  }).join('');
+  
+  const front = document.getElementById('cardFront');
+  front.style.borderColor = `var(--level${lvl})`;
+  front.className = `card-face card-front level-${lvl}`;
+}
+
+function resetCard() {
+  const card = document.getElementById('card');
+  card.classList.remove('flipped');
+  G.cardFlipped = false;
+  G.currentCard = null;
+  document.getElementById('timerBtn').style.display = 'none';
+  document.getElementById('diceBtn').style.display = 'none';
+  document.getElementById('cardStrip').style.display = 'none';
+  document.getElementById('passBtn').textContent = `Pass (${3 - (G.players[G.currentPlayer]?.passes||0)} left)`;
+}
+
+function drawCard() {
+  if(G.cardFlipped) return;
+  
+  const lvl = G.currentLevel;
+  const pool = CARDS[lvl];
+  const current = G.players[G.currentPlayer];
+  const matches = getMatches(current, lvl);
+  const availablePairings = getAvailablePairings(current, lvl);
+  const hasTarget = matches.length > 0;
+  
+  const playable = pool.map((c,i) => ({card:c, idx:i})).filter(({card}) => canPlayCard(card, availablePairings, hasTarget));
+  
+  if (playable.length === 0) {
+    document.getElementById('cardLevelLabel').textContent = LEVEL_NAMES[lvl];
+    document.getElementById('cardLevelLabel').style.color = `var(--level${lvl})`;
+    document.getElementById('cardText').innerHTML = `<strong>${current.name}</strong> is spectating this round 👀`;
+    document.getElementById('cardTimer').style.display = 'none';
+    document.getElementById('cardDice').style.display = 'none';
+    document.getElementById('cardStrip').style.display = 'none';
+    document.getElementById('card').classList.add('flipped');
+    G.cardFlipped = true;
+    G.cardsDrawn++;
+    return;
+  }
+  
+  let pick;
+  let attempts = 0;
+  do {
+    pick = playable[Math.floor(Math.random()*playable.length)];
+    attempts++;
+  } while(G.usedCards[lvl].has(pick.idx) && attempts < 50);
+  if(attempts >= 50) G.usedCards[lvl].clear();
+  G.usedCards[lvl].add(pick.idx);
+  
+  const card = {...pick.card};
+  
+  // Replace {p1} with matched player
+  if (card.text.includes('{p1}')) {
+    let validTargets = matches;
+    if (card.requires && card.requires !== 'any') {
+      validTargets = matches.filter(m => {
+        const pt = getPairingType(current, m);
+        return cardMatchesPairing(card, pt, current.gender, m.gender);
+      });
+    }
+    const target = validTargets.length ? validTargets[Math.floor(Math.random()*validTargets.length)] : current;
+    card.text = card.text.replace(/\{p1\}/g, `<strong>${target.name}</strong>`);
+    card.targetName = target.name;
+    card._targetPlayer = target;
+  }
+  
+  G.currentCard = card;
+  
+  document.getElementById('cardLevelLabel').textContent = LEVEL_NAMES[lvl];
+  document.getElementById('cardLevelLabel').style.color = `var(--level${lvl})`;
+  document.getElementById('cardText').innerHTML = card.text;
+  
+  const timerBadge = document.getElementById('cardTimer');
+  if(card.timer) {
+    timerBadge.style.display = 'block';
+    timerBadge.textContent = `⏱ ${card.timer}s`;
+  } else timerBadge.style.display = 'none';
+  
+  const diceBadge = document.getElementById('cardDice');
+  if(card.dice) {
+    diceBadge.style.display = 'block';
+    diceBadge.textContent = '🎲 Roll the dice!';
+  } else diceBadge.style.display = 'none';
+
+  const stripBadge = document.getElementById('cardStrip');
+  if(card.strip) {
+    stripBadge.style.display = 'block';
+    const stripLabel = card.strip === 'both' ? '👕 Both strip!' : card.strip === 'target' ? '👕 They strip!' : '👕 You strip!';
+    stripBadge.textContent = stripLabel;
+  } else stripBadge.style.display = 'none';
+  
+  document.getElementById('card').classList.add('flipped');
+  G.cardFlipped = true;
+  
+  if(card.timer) document.getElementById('timerBtn').style.display = 'inline-block';
+  if(card.dice) document.getElementById('diceBtn').style.display = 'inline-block';
+  
+  // Handle stripping
+  if(card.strip) {
+    setTimeout(() => handleStrip(card), 800);
+  }
+  
+  G.cardsDrawn++;
+}
+
+function passCard() {
+  const p = G.players[G.currentPlayer];
+  if(p.passes >= 3) { alert(`${p.name} has no passes left!`); return; }
+  p.passes++;
+  resetCard();
+  setTimeout(() => drawCard(), 400);
+}
+
+function nextTurn() {
+  if(G.cardsDrawn >= G.cardsPerLevel && G.currentLevel < 5) {
+    showVote();
+    return;
+  }
+  G.currentPlayer = (G.currentPlayer + 1) % G.players.length;
+  updateGameUI();
+  resetCard();
+}
+
+// ── DICE ──
+function rollDice() {
+  const overlay = document.getElementById('diceOverlay');
+  overlay.classList.add('active');
+  
+  const eligible = G.players.filter(p => p.maxLevel >= G.currentLevel);
+  const who = eligible[Math.floor(Math.random()*eligible.length)];
+  const mod = MODIFIERS[Math.floor(Math.random()*MODIFIERS.length)];
+  
+  document.getElementById('dieWho').textContent = who.name;
+  document.getElementById('dieMod').textContent = mod;
+  document.getElementById('diceResult').innerHTML = `<strong>${who.name}</strong> — ${mod}!`;
+}
+function closeDice() { document.getElementById('diceOverlay').classList.remove('active'); }
+
+// ── TIMER ──
+function startTimer() {
+  if(!G.currentCard?.timer) return;
+  let remaining = G.currentCard.timer;
+  const total = remaining;
+  const overlay = document.getElementById('timerOverlay');
+  const display = document.getElementById('timerDisplay');
+  const circle = document.getElementById('timerCircle');
+  
+  overlay.classList.add('active');
+  display.textContent = remaining;
+  circle.style.strokeDashoffset = '0';
+  
+  G.timerInterval = setInterval(() => {
+    remaining--;
+    display.textContent = remaining;
+    circle.style.strokeDashoffset = (1 - remaining/total) * 628;
+    if(remaining <= 0) {
+      clearInterval(G.timerInterval);
+      display.textContent = '🔥';
+      if(navigator.vibrate) navigator.vibrate([200,100,200]);
+      setTimeout(() => overlay.classList.remove('active'), 2000);
+    }
+  }, 1000);
+}
+function stopTimer() {
+  clearInterval(G.timerInterval);
+  document.getElementById('timerOverlay').classList.remove('active');
+}
+
+// ── VOTE ──
+let voteState = {};
+function showVote() {
+  const nextLevel = G.currentLevel + 1;
+  const overlay = document.getElementById('voteOverlay');
+  document.getElementById('voteTitle').textContent = `Escalate to ${LEVEL_NAMES[nextLevel]}?`;
+  document.getElementById('voteDesc').textContent = `${LEVEL_EMOJIS[nextLevel]} Things are about to get more intense...`;
+  
+  voteState = {yes:0, no:0, total: G.players.length, needed: Math.ceil(G.players.length/2), voterIdx: 0};
+  updateVoteUI();
+  overlay.classList.add('active');
+}
+
+function updateVoteUI() {
+  const p = G.players[voteState.voterIdx];
+  if(!p) return finalizeVote();
+  document.getElementById('voteTally').textContent = `${p.name}'s vote (${voteState.voterIdx+1}/${voteState.total})`;
+  
+  const btns = document.getElementById('voteButtons');
+  if(p.maxLevel <= G.currentLevel) {
+    btns.innerHTML = `<span style="color:var(--text-dim)">At max comfort — auto-skip</span>`;
+    voteState.no++;
+    voteState.voterIdx++;
+    setTimeout(updateVoteUI, 800);
+  } else {
+    btns.innerHTML = `
+      <button class="btn btn-primary btn-small" onclick="castVote(true)">🔥 Escalate!</button>
+      <button class="btn btn-secondary btn-small" onclick="castVote(false)">Stay here</button>
+    `;
+  }
+}
+
+function castVote(yes) {
+  if(yes) voteState.yes++; else voteState.no++;
+  voteState.voterIdx++;
+  updateVoteUI();
+}
+
+function finalizeVote() {
+  const overlay = document.getElementById('voteOverlay');
+  if(voteState.yes >= voteState.needed) {
+    G.currentLevel = Math.min(5, G.currentLevel + 1);
+    G.cardsDrawn = 0;
+    G.players.forEach(p => p.passes = 0);
+    document.getElementById('voteTally').textContent = `🔥 ESCALATING to ${LEVEL_NAMES[G.currentLevel]}!`;
+  } else {
+    document.getElementById('voteTally').textContent = `Staying at ${LEVEL_NAMES[G.currentLevel]}`;
+    G.cardsDrawn = 0;
+  }
+  setTimeout(() => {
+    overlay.classList.remove('active');
+    G.currentPlayer = (G.currentPlayer + 1) % G.players.length;
+    updateGameUI();
+    resetCard();
+  }, 1500);
+}
+
+function skipVote() {
+  document.getElementById('voteOverlay').classList.remove('active');
+  G.cardsDrawn = 0;
+  G.currentPlayer = (G.currentPlayer + 1) % G.players.length;
+  updateGameUI();
+  resetCard();
+}
+
+// ── MENU ──
+function showMenu() { document.getElementById('menuOverlay').classList.toggle('active'); }
+
+init();
+</script>
+</body>
+</html>

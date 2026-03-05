@@ -1,0 +1,5 @@
+GHOST_URL=https://theportugalbrief.pt
+GHOST_CONTENT_API_KEY=572ac18cd3e84202174908842b
+BLUESKY_HANDLE=theportugalbrief.bsky.social
+BLUESKY_APP_PASSWORD=7hal-5a75-7aht-cvuk
+LISTEN_PORT=5555

@@ -1,0 +1,42 @@
+{
+  "reddit": {
+    "client_id": "",
+    "client_secret": "",
+    "user_agent": "RedditStoryBot/1.0"
+  },
+  "elevenlabs": {
+    "api_key": "",
+    "voice_id": "pNInz6obpgDQGcFmaJgB",
+    "model_id": "eleven_multilingual_v2",
+    "stability": 0.5,
+    "similarity_boost": 0.75
+  },
+  "pexels": {
+    "api_key": ""
+  },
+  "youtube": {
+    "client_secrets_file": "config/client_secret.json",
+    "token_file": "config/youtube_token.json"
+  },
+  "subreddits": [
+    "AmItheAsshole",
+    "tifu",
+    "confession",
+    "TrueOffMyChest",
+    "relationship_advice",
+    "pettyrevenge",
+    "MaliciousCompliance",
+    "entitledparents"
+  ],
+  "video": {
+    "background_dir": "assets/backgrounds",
+    "font_path": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+    "font_size": 48,
+    "resolution": "1080x1920",
+    "fps": 30
+  },
+  "output_dir": "output",
+  "posts_per_run": 1,
+  "min_post_length": 500,
+  "max_post_length": 10000
+}

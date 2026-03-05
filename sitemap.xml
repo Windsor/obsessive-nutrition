@@ -89,10 +89,20 @@
   </url>
   <url>
     <loc>https://obsessivenutrition.com/blog/fermented-foods.html</loc>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://obsessivenutrition.com/blog/vitamin-d.html</loc>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://obsessivenutrition.com/blog/magnesium.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

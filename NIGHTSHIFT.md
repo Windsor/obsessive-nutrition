@@ -10,6 +10,18 @@
 - If a task is blocked, skip it and move to the next
 - Review and update MEMORY.md at end of shift
 
+## Block 1 — 11pm (2026-03-05→Mar 6) ✅ COMPLETE
+- ✅ Health check: all services active, disk 88%, RAM 8.9GB free — r2d2 stable
+- ✅ PT Brief: 3 articles published (Portuguese Citizenship 2026, Silver Coast guide, Starting a Business in Portugal)
+- ✅ All 3 auto-posted to Bluesky via social-poster webhook
+- ✅ PT Brief total: ~236 published posts
+- ✅ Obsessive Nutrition: ashwagandha.html (~2,900 words — KSM-66 vs Sensoril, cortisol RCTs, thyroid warning, dosing table)
+- ✅ Obsessive Nutrition: berberine.html (~3,100 words — AMPK mechanism, metformin head-to-head table, bioavailability problem, CYP3A4 interactions, Ozempic myth debunked)
+- ✅ Blog index updated (19 articles), sitemap updated (27 URLs)
+- ✅ Committed + pushed: commit ca8caae → Windsor/obsessive-nutrition
+- ✅ Offsite backup: ghost_portugal 2.2MB → workspace/backups/r2d2/2026-03-06-block1/
+- ✅ Project Tracker: tasks #367–369
+
 ## Priority Queue
 
 ### High Priority
@@ -104,6 +116,20 @@
 - ✅ Committed + pushed: commit b9f20be → Windsor/obsessive-nutrition
 - ✅ Offsite backup: ghost_portugal 2.0MB, project_tracker 24K → workspace/backups/r2d2/2026-03-05-block1/
 - ✅ Project Tracker: tasks #353–355
+
+## Block 4 — 5am (2026-03-05) ✅ COMPLETE (Final)
+- ✅ Health check: all services active, disk 88%, RAM 9.2GB free — r2d2 stable
+- ✅ PT Brief: 2 articles published — International Schools in Portugal 2026 + Portuguese Tax for Expats 2026 (IRS brackets, IFICI, NHR, CGT, DTAs)
+- ✅ Both auto-posted to Bluesky via social-poster webhook
+- ✅ PT Brief total: 219 published posts (end of night shift)
+- ✅ Obsessive Nutrition: collagen.html (~2,800 words — hydrolysed vs UC-II, joints/skin/bone/gut evidence, forms comparison, vitamin C cofactor)
+- ✅ Obsessive Nutrition: probiotics.html (~3,200 words — strain-specific evidence, LGG + S.boulardii + B.infantis 35624 + VSL#3, AAD/IBS/immunity/gut-brain axis)
+- ✅ Blog index updated (17 articles), sitemap updated (25 URLs)
+- ✅ Committed + pushed: commit 835a43a → Windsor/obsessive-nutrition
+- ✅ Final offsite backup: ghost_portugal 2.1MB, project_tracker 25KB → workspace/backups/r2d2/2026-03-05-block4/
+- ✅ Project Tracker: 3 tasks created (projects #10 and #12)
+- ✅ MEMORY.md reviewed and updated
+- Night shift total (Mar 4/5): Blocks 1–4, 10 PT Brief articles published (219 total), 8 new Obsessive Nutrition articles (17 total), 4 commits pushed
 
 ## Block 4 — 5am (2026-03-04) ✅ COMPLETE (Final)
 - ✅ Health check: all 5 services active, disk 88%, RAM 5.1GB free — r2d2 stable

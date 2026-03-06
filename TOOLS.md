@@ -96,6 +96,14 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 
 ---
 
+## Pinterest API
+
+- **App ID:** 1550720
+- **App Secret Key:** 1165975f8a2ef6d863d734ac38d3b073d265b206
+- **Docs:** https://developers.pinterest.com/docs/getting-started/introduction/
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.
 
 ## Ghost CMS (Portugal News Newsletter)

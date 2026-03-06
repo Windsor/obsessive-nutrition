@@ -1,1 +1,34 @@
-tools/seo/gsc-credentials.json
+# Credentials & secrets — NEVER commit these
+*credentials*.json
+*service-account*.json
+*serviceaccount*.json
+*secret*.json
+*.env
+.env.*
+!.env.example
+
+# API keys
+*api-key*
+*apikey*
+
+# Google Cloud / OAuth
+gsc-credentials.json
+google-credentials.json
+client_secret*.json
+token.json
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

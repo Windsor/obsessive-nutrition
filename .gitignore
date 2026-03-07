@@ -32,3 +32,17 @@ venv/
 # IDE
 .vscode/
 .idea/
+
+# Workspace-only files — do not push to obsessive-nutrition repo
+TOOLS.md
+MEMORY.md
+NIGHTSHIFT.md
+HEARTBEAT.md
+AGENTS.md
+SOUL.md
+USER.md
+IDENTITY.md
+memory/
+backups/
+tmp/
+tools/
